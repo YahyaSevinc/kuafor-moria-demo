@@ -12,7 +12,7 @@ export default function Hero({ imageSrc, imageAlt = "Kuaförlük teknoloji görs
   const { ref, isInView } = useScrollAnimation();
 
   return (
-    <div ref={ref} className="min-h-[80vh] sm:min-h-screen bg-[#F5F5F5] flex flex-col px-3 pt-8 pb-4 sm:px-0 sm:pt-0 sm:pb-0">
+    <div ref={ref} className="min-h-[70vh] sm:min-h-screen bg-[#F5F5F5] flex flex-col px-3 pt-8 pb-4 sm:px-0 sm:pt-0 sm:pb-0">
       {/* Text Section - Top */}
       <motion.div 
         className="flex-1 flex items-center justify-center"
