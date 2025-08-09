@@ -18,7 +18,7 @@ export default function Footer() {
                     src="/logo.png"
                     alt="Demo Kuaför Logo"
                     fill
-                    className="object-contain"
+                    className="object-contain transition-all duration-300 hover:scale-105"
                     priority
                   />
                 </div>

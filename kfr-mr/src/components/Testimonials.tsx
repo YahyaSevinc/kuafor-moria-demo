@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { useSpring, animated, config } from '@react-spring/web';
+import { use3DAnimation, useFloatingAnimation } from "../hooks/use3DAnimation";
 
 interface Testimonial {
   id: number;
@@ -88,6 +89,8 @@ const Testimonials = () => {
   const topScrollRef = useRef<HTMLDivElement>(null);
   const bottomScrollRef = useRef<HTMLDivElement>(null);
 
+  const { ref: headingRef, springProps: headingSpring } = use3DAnimation(200);
+
   useEffect(() => {
     const topContainer = topScrollRef.current;
     const bottomContainer = bottomScrollRef.current;
@@ -138,36 +141,52 @@ const Testimonials = () => {
     ));
   };
 
-  const renderTestimonialCard = (testimonial: Testimonial) => (
-    <div
-      key={testimonial.id}
-      className="min-w-[280px] sm:min-w-[350px] bg-white rounded-lg shadow-lg p-4 sm:p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300"
-    >
-      <div className="flex items-center mb-3 sm:mb-4">
-        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center text-white font-bold text-base sm:text-lg mr-3 sm:mr-4">
-          {testimonial.name.charAt(0)}
-        </div>
-        <div>
-          <h3 className="font-semibold text-gray-800 text-sm sm:text-base">{testimonial.name}</h3>
-          <div className="flex items-center">
-            {renderStars(testimonial.rating)}
+  const renderTestimonialCard = (testimonial: Testimonial) => {
+    const { ref: cardRef, springProps: cardSpring } = use3DAnimation(400 + testimonial.id * 50);
+    
+    return (
+      <animated.div
+        key={testimonial.id}
+        ref={cardRef}
+        className="min-w-[280px] sm:min-w-[350px] bg-white rounded-lg shadow-lg p-4 sm:p-6 border border-gray-100 hover:shadow-2xl transition-all duration-500 transform perspective-1000"
+        style={{
+          ...cardSpring,
+          transform: `${cardSpring.transform} perspective(1000px)`,
+        }}
+        onMouseEnter={(e) => {
+          const target = e.currentTarget;
+          target.style.transform = 'perspective(1000px) rotateX(3deg) rotateY(3deg) scale(1.02)';
+        }}
+        onMouseLeave={(e) => {
+          const target = e.currentTarget;
+          target.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+        }}
+      >
+        <div className="flex items-center mb-3 sm:mb-4">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center text-white font-bold text-base sm:text-lg mr-3 sm:mr-4">
+            {testimonial.name.charAt(0)}
+          </div>
+          <div>
+            <h3 className="font-semibold text-gray-800 text-sm sm:text-base">{testimonial.name}</h3>
+            <div className="flex items-center">
+              {renderStars(testimonial.rating)}
+            </div>
           </div>
         </div>
-      </div>
-      <p className="text-gray-600 leading-relaxed italic text-sm sm:text-base">
-        &ldquo;{testimonial.comment}&rdquo;
-      </p>
-    </div>
-  );
+        <p className="text-gray-600 leading-relaxed italic text-sm sm:text-base">
+          &ldquo;{testimonial.comment}&rdquo;
+        </p>
+      </animated.div>
+    );
+  };
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+    <section className="py-12 sm:py-16 lg:py-20 bg-gray-50 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+        <animated.div
+          ref={headingRef}
           className="text-center mb-8 sm:mb-12"
+          style={headingSpring}
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-2 sm:mb-4">
             Müşteri Yorumları
@@ -175,7 +194,7 @@ const Testimonials = () => {
           <p className="text-sm sm:text-base lg:text-lg text-gray-600 max-w-2xl mx-auto px-4">
             Müşterilerimizin deneyimleri ve memnuniyeti bizim için en değerli geri bildirimdir
           </p>
-        </motion.div>
+        </animated.div>
 
         <div
           onMouseEnter={() => setIsHovered(true)}
