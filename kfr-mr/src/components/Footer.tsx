@@ -107,12 +107,12 @@ export default function Footer() {
             </div>
 
             {/* Sosyal medya ikonları */}
-            <div className="flex space-x-3 sm:space-x-4">
+            <div className="flex space-x-3 sm:space-x-4 ">
               {[1, 2, 3, 4].map((index) => (
                 <Link 
                   key={index}
                   href="#instagram" 
-                  className="w-5 h-5 sm:w-6 sm:h-6 hover:opacity-70 transition-opacity duration-200"
+                  className="w-5 h-5 sm:w-6 sm:h-6 hover:opacity-70 hover:scale-105 hover:scale-105 transition-all duration-300"
                 >
                   <svg 
                     className="w-5 h-5 sm:w-6 sm:h-6 text-black" 
