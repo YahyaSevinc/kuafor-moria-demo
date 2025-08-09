@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { use3DAnimation, useFloatingAnimation } from "../hooks/use3DAnimation";
+import { use3DAnimation } from "../hooks/use3DAnimation";
 import { animated } from "@react-spring/web";
 
 const blogPosts = [
@@ -30,6 +30,11 @@ const BlogPreview = () => {
   const { ref: descriptionRef, springProps: descriptionSpring } = use3DAnimation(600);
   const { ref: postsRef, springProps: postsSpring } = use3DAnimation(800);
   const { ref: buttonRef, springProps: buttonSpring } = use3DAnimation(1000);
+  
+  // Pre-generate animation hooks for blog posts
+  const post1Animation = use3DAnimation(1200);
+  const post2Animation = use3DAnimation(1400);
+  const postAnimations = [post1Animation, post2Animation];
 
   return (
     <section className="flex flex-col items-center py-8 sm:py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -69,13 +74,13 @@ const BlogPreview = () => {
         style={postsSpring}
       >
         {blogPosts.map((post, index) => {
-          const { ref: postRef, springProps: postSpring } = use3DAnimation(1000 + index * 200);
+          const { ref: postRef, springProps: postSpring } = postAnimations[index];
           
           return (
             <animated.div 
               key={post.id} 
               ref={postRef}
-              className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 w-full md:w-[350px] max-w-full hover:scale-105 transition-all duration-500 transform perspective-1000 hover:shadow-2xl"
+              className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 w-full md:w-[350px] max-w-full hover:scale-105 transition-all duration-300 transform perspective-1000 hover:shadow-2xl"
               style={{
                 ...postSpring,
                 transform: `${postSpring.transform} perspective(1000px)`,
@@ -95,10 +100,10 @@ const BlogPreview = () => {
                   alt={post.title} 
                   width={350} 
                   height={200} 
-                  className="object-cover w-full h-[150px] sm:h-[200px] transition-transform duration-500 ease-in-out hover:scale-110" 
+                  className="object-cover w-full h-[150px] sm:h-[200px] transition-transform duration-300 ease-in-out hover:scale-110" 
                 />
                 {/* 3D Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-white/10 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-white/10 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
               </div>
               <span className="text-xs text-[#5D38DE] bg-[#F5F2FF] px-2 sm:px-3 py-1 rounded-2xl font-medium mb-2 inline-block">
                 {post.category}

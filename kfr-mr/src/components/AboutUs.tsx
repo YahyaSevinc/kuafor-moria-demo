@@ -1,7 +1,7 @@
 "use client";
-import { useSpring, animated, config } from '@react-spring/web';
+import {animated } from '@react-spring/web';
 import Image from 'next/image';
-import { use3DAnimation, useFloatingAnimation } from "../hooks/use3DAnimation";
+import { use3DAnimation } from "../hooks/use3DAnimation";
 
 interface AboutUsProps {
   imageSrc: string;
@@ -60,7 +60,7 @@ export default function AboutUs({ imageSrc, imageAlt }: AboutUsProps) {
           style={imageSpring}
         >
           <animated.div 
-            className="relative w-full h-48 sm:h-64 md:h-80 lg:h-96 xl:h-[500px] overflow-hidden rounded-2xl sm:rounded-3xl group cursor-pointer transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-lg"
+            className="relative w-full h-48 sm:h-64 md:h-80 lg:h-96 xl:h-[500px] overflow-hidden rounded-2xl sm:rounded-3xl group cursor-pointer transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg"
             style={{
               transform: `${imageSpring.transform} perspective(1000px)`,
             }}
@@ -83,7 +83,7 @@ export default function AboutUs({ imageSrc, imageAlt }: AboutUsProps) {
             {/* Black overlay with 25% opacity */}
             <div className="absolute inset-0 bg-black opacity-25"></div>
             {/* 3D Glow Effect */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </animated.div>
         </animated.div>
 

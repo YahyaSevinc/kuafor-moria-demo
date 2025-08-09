@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { useSpring, animated, config } from '@react-spring/web';
-import { use3DAnimation, useFloatingAnimation } from "../hooks/use3DAnimation";
+import { animated, SpringValue } from '@react-spring/web';
+import { use3DAnimation } from "../hooks/use3DAnimation";
 
 interface Testimonial {
   id: number;
@@ -90,6 +90,46 @@ const Testimonials = () => {
   const bottomScrollRef = useRef<HTMLDivElement>(null);
 
   const { ref: headingRef, springProps: headingSpring } = use3DAnimation(200);
+  
+  // Pre-generate animation hooks for all testimonial cards
+  // Original testimonials (1-10)
+  const testimonial1Animation = use3DAnimation(450);
+  const testimonial2Animation = use3DAnimation(500);
+  const testimonial3Animation = use3DAnimation(550);
+  const testimonial4Animation = use3DAnimation(600);
+  const testimonial5Animation = use3DAnimation(650);
+  const testimonial6Animation = use3DAnimation(700);
+  const testimonial7Animation = use3DAnimation(750);
+  const testimonial8Animation = use3DAnimation(800);
+  const testimonial9Animation = use3DAnimation(850);
+  const testimonial10Animation = use3DAnimation(900);
+  
+  // Duplicated testimonials for first row (11-15)
+  const duplicate1Animation = use3DAnimation(950);
+  const duplicate2Animation = use3DAnimation(1000);
+  const duplicate3Animation = use3DAnimation(1050);
+  const duplicate4Animation = use3DAnimation(1100);
+  const duplicate5Animation = use3DAnimation(1150);
+  
+  // Duplicated testimonials for second row (16-20)
+  const duplicate6Animation = use3DAnimation(1200);
+  const duplicate7Animation = use3DAnimation(1250);
+  const duplicate8Animation = use3DAnimation(1300);
+  const duplicate9Animation = use3DAnimation(1350);
+  const duplicate10Animation = use3DAnimation(1400);
+  
+  const testimonialAnimations = [
+    testimonial1Animation, testimonial2Animation, testimonial3Animation, testimonial4Animation, testimonial5Animation,
+    testimonial6Animation, testimonial7Animation, testimonial8Animation, testimonial9Animation, testimonial10Animation
+  ];
+  
+  const duplicateAnimations1 = [
+    duplicate1Animation, duplicate2Animation, duplicate3Animation, duplicate4Animation, duplicate5Animation
+  ];
+  
+  const duplicateAnimations2 = [
+    duplicate6Animation, duplicate7Animation, duplicate8Animation, duplicate9Animation, duplicate10Animation
+  ];
 
   useEffect(() => {
     const topContainer = topScrollRef.current;
@@ -141,14 +181,16 @@ const Testimonials = () => {
     ));
   };
 
-  const renderTestimonialCard = (testimonial: Testimonial) => {
-    const { ref: cardRef, springProps: cardSpring } = use3DAnimation(400 + testimonial.id * 50);
-    
+  const renderTestimonialCard = (
+    testimonial: Testimonial, 
+    cardRef: (node?: Element | null) => void, 
+    cardSpring: { transform: SpringValue<string>; opacity: SpringValue<number>; scale: SpringValue<number> }
+  ) => {
     return (
       <animated.div
         key={testimonial.id}
         ref={cardRef}
-        className="min-w-[280px] sm:min-w-[350px] bg-white rounded-lg shadow-lg p-4 sm:p-6 border border-gray-100 hover:shadow-2xl transition-all duration-500 transform perspective-1000"
+        className="min-w-[280px] sm:min-w-[350px] bg-white rounded-lg shadow-lg p-4 sm:p-6 border border-gray-100 hover:shadow-2xl transition-all duration-300 transform perspective-1000"
         style={{
           ...cardSpring,
           transform: `${cardSpring.transform} perspective(1000px)`,
@@ -207,13 +249,15 @@ const Testimonials = () => {
             className="flex gap-4 sm:gap-6 overflow-x-auto scrollbar-hide pb-4"
             style={{ scrollBehavior: 'smooth' }}
           >
-            {testimonials.slice(0, 5).map((testimonial) => 
-              renderTestimonialCard(testimonial)
-            )}
+            {testimonials.slice(0, 5).map((testimonial, index) => {
+              const { ref: cardRef, springProps: cardSpring } = testimonialAnimations[index];
+              return renderTestimonialCard(testimonial, cardRef, cardSpring);
+            })}
             {/* Sonsuz döngü için aynı yorumları tekrar ekle */}
-            {testimonials.slice(0, 5).map((testimonial) => 
-              renderTestimonialCard({...testimonial, id: testimonial.id + 100})
-            )}
+            {testimonials.slice(0, 5).map((testimonial, index) => {
+              const { ref: cardRef, springProps: cardSpring } = duplicateAnimations1[index];
+              return renderTestimonialCard({...testimonial, id: testimonial.id + 100}, cardRef, cardSpring);
+            })}
           </div>
 
           {/* Alt Satır - Daha Yavaş */}
@@ -222,13 +266,15 @@ const Testimonials = () => {
             className="flex gap-4 sm:gap-6 overflow-x-auto scrollbar-hide pb-4"
             style={{ scrollBehavior: 'smooth' }}
           >
-            {testimonials.slice(5, 10).map((testimonial) => 
-              renderTestimonialCard(testimonial)
-            )}
+            {testimonials.slice(5, 10).map((testimonial, index) => {
+              const { ref: cardRef, springProps: cardSpring } = testimonialAnimations[index + 5];
+              return renderTestimonialCard(testimonial, cardRef, cardSpring);
+            })}
             {/* Sonsuz döngü için aynı yorumları tekrar ekle */}
-            {testimonials.slice(5, 10).map((testimonial) => 
-              renderTestimonialCard({...testimonial, id: testimonial.id + 200})
-            )}
+            {testimonials.slice(5, 10).map((testimonial, index) => {
+              const { ref: cardRef, springProps: cardSpring } = duplicateAnimations2[index];
+              return renderTestimonialCard({...testimonial, id: testimonial.id + 200}, cardRef, cardSpring);
+            })}
           </div>
         </div>
       </div>

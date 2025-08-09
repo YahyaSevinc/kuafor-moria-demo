@@ -1,7 +1,7 @@
 "use client";
-import { useSpring, animated, config } from '@react-spring/web';
+import { animated } from '@react-spring/web';
 import Image from "next/image";
-import { use3DAnimation, useFloatingAnimation } from "../hooks/use3DAnimation";
+import { use3DAnimation } from "../hooks/use3DAnimation";
 
 interface ServicesProps {
   imageSrc?: string;
@@ -12,9 +12,15 @@ export default function Services({
   imageSrc = "/1.png", 
   imageAlt = "Saç bakım hizmetleri" 
 }: ServicesProps) {
-  const { ref: mainRef, springProps: mainSpring } = use3DAnimation(200);
+  const { ref: mainRef, } = use3DAnimation(200);
   const { ref: badgeRef, springProps: badgeSpring } = use3DAnimation(400);
   const { ref: headingRef, springProps: headingSpring } = use3DAnimation(600);
+  
+  // Pre-generate animation hooks for services
+  const service1Animation = use3DAnimation(800);
+  const service2Animation = use3DAnimation(1000);
+  const service3Animation = use3DAnimation(1200);
+  const serviceAnimations = [service1Animation, service2Animation, service3Animation];
 
   const services = [
     {
@@ -77,13 +83,13 @@ export default function Services({
         {/* Services Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {services.map((service, index) => {
-            const { ref: serviceRef, springProps: serviceSpring } = use3DAnimation(800 + index * 200);
+            const { ref: serviceRef, springProps: serviceSpring } = serviceAnimations[index];
             
             return (
               <animated.div 
                 key={index}
                 ref={serviceRef}
-                className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 transform perspective-1000"
+                className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 transform perspective-1000"
                 style={{
                   ...serviceSpring,
                   transform: `${serviceSpring.transform} perspective(1000px)`,
@@ -103,10 +109,10 @@ export default function Services({
                     src={service.image}
                     alt={imageAlt}
                     fill
-                    className="object-cover object-center transition-transform duration-500 ease-in-out hover:scale-110"
+                    className="object-cover object-center transition-transform duration-300 ease-in-out hover:scale-110"
                   />
                   {/* 3D Glow Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-white/10 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-white/10 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 
                 {/* Service Content */}

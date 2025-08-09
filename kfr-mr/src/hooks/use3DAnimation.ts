@@ -55,7 +55,7 @@ export const useFloatingAnimation = (delay = 0) => {
   return { ref, springProps, isVisible };
 };
 
-export const useParallaxAnimation = (delay = 0, intensity = 0.1) => {
+export const useParallaxAnimation = (intensity = 0.1) => {
   const [ref, inView] = useInView({
     threshold: 0.1,
     triggerOnce: false,

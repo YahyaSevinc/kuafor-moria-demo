@@ -1,14 +1,8 @@
 'use client';
 
-import { Open_Sans } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const openSans = Open_Sans({
-  subsets: ['latin'],
-  weight: ['400', '600'],
-  variable: '--font-open-sans',
-});
 
 interface BreadcrumbItem {
   label: string;

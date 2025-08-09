@@ -4,7 +4,7 @@ import { Open_Sans } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { useSpring, animated, config } from '@react-spring/web';
+import { animated, } from '@react-spring/web';
 import { use3DAnimation } from "../hooks/use3DAnimation";
 
 const openSans = Open_Sans({

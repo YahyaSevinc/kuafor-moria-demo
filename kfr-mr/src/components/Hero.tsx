@@ -18,7 +18,7 @@ export default function Hero({ imageSrc, imageAlt = "Kuaförlük teknoloji görs
         className="flex-1 flex items-center justify-center"
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-        transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+        transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
       >
         <div className="text-center w-full">
           <motion.h1 
