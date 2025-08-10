@@ -69,25 +69,25 @@ export default function Header() {
               Hakkımızda
             </Link>
             <Link 
-              href="#hizmetlerimiz" 
+              href="/services" 
               className={`${openSans.variable} font-normal text-base lg:text-lg text-black hover:text-[#5D38DE] transition-all duration-300 transform hover:scale-105 hover:-translate-y-1`}
             >
               Hizmetlerimiz
             </Link>
             <Link 
-              href="#galeri" 
+              href="/gallery" 
               className={`${openSans.variable} font-normal text-base lg:text-lg text-black hover:text-[#5D38DE] transition-all duration-300 transform hover:scale-105 hover:-translate-y-1`}
             >
               Galeri
             </Link>
             <Link 
-              href="#blog" 
+              href="/blog" 
               className={`${openSans.variable} font-normal text-base lg:text-lg text-black hover:text-[#5D38DE] transition-all duration-300 transform hover:scale-105 hover:-translate-y-1`}
             >
               Blog
             </Link>
             <Link 
-              href="#iletisim" 
+              href="/contact" 
               className={`${openSans.variable} font-normal text-base lg:text-lg text-black hover:text-[#5D38DE] transition-all duration-300 transform hover:scale-105 hover:-translate-y-1`}
             >
               İletişim
@@ -193,35 +193,35 @@ export default function Header() {
         <div className="flex-col h-full pt-14 pb-10 px-4">
           <div className="flex-1 flex flex-col justify-center">
             <Link 
-              href="#hakkimizda" 
+              href="/about-us" 
               className={`${openSans.variable} font-normal text-2xl text-black hover:text-[#5D38DE] text-center py-4 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Hakkımızda
             </Link>
             <Link 
-              href="#hizmetlerimiz" 
+              href="/services" 
               className={`${openSans.variable} font-normal text-2xl text-black hover:text-[#5D38DE] text-center py-4 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Hizmetlerimiz
             </Link>
             <Link 
-              href="#galeri" 
+              href="/gallery" 
               className={`${openSans.variable} font-normal text-2xl text-black hover:text-[#5D38DE] text-center py-4 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Galeri
             </Link>
             <Link 
-              href="#blog" 
+              href="/blog" 
               className={`${openSans.variable} font-normal text-2xl text-black hover:text-[#5D38DE] text-center py-4 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Blog
             </Link>
             <Link 
-              href="#iletisim" 
+              href="/contact" 
               className={`${openSans.variable} font-normal text-2xl text-black hover:text-[#5D38DE] text-center py-4 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1`}
               onClick={() => setIsMobileMenuOpen(false)}
             >

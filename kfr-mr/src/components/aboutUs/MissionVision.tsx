@@ -35,6 +35,8 @@ export default function AccordionWithImage({ imageSrc = "https://images.unsplash
         <Image
           src={imageSrc}
           alt="Left Visual"
+          width={500}
+          height={500}
           className="h-full w-full object-cover"
           draggable={false}
         />
