@@ -9,11 +9,11 @@ interface AboutUsProps {
 }
 
 export default function AboutUs({ imageSrc, imageAlt }: AboutUsProps) {
-  const { ref: mainRef, springProps: mainSpring } = use3DAnimation(200);
-  const { ref: titleRef, springProps: titleSpring } = use3DAnimation(400);
-  const { ref: subtitleRef, springProps: subtitleSpring } = use3DAnimation(600);
-  const { ref: imageRef, springProps: imageSpring } = use3DAnimation(800);
-  const { ref: contentRef, springProps: contentSpring } = use3DAnimation(1000);
+  const { ref: mainRef, springProps: mainSpring } = use3DAnimation(0);
+  const { ref: titleRef, springProps: titleSpring } = use3DAnimation(100);
+  const { ref: subtitleRef, springProps: subtitleSpring } = use3DAnimation(200);
+  const { ref: imageRef, springProps: imageSpring } = use3DAnimation(300);
+  const { ref: contentRef, springProps: contentSpring } = use3DAnimation(300);
 
   return (
     <section ref={mainRef} id="hakkimizda" className="py-8 sm:py-10 bg-white overflow-hidden">

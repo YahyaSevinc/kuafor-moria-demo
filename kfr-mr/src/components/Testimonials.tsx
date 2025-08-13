@@ -93,30 +93,30 @@ const Testimonials = () => {
   
   // Pre-generate animation hooks for all testimonial cards
   // Original testimonials (1-10)
-  const testimonial1Animation = use3DAnimation(450);
-  const testimonial2Animation = use3DAnimation(500);
-  const testimonial3Animation = use3DAnimation(550);
-  const testimonial4Animation = use3DAnimation(600);
-  const testimonial5Animation = use3DAnimation(650);
-  const testimonial6Animation = use3DAnimation(700);
-  const testimonial7Animation = use3DAnimation(750);
-  const testimonial8Animation = use3DAnimation(800);
-  const testimonial9Animation = use3DAnimation(850);
-  const testimonial10Animation = use3DAnimation(900);
+  const testimonial1Animation = use3DAnimation(0);
+  const testimonial2Animation = use3DAnimation(110);
+  const testimonial3Animation = use3DAnimation(120);
+  const testimonial4Animation = use3DAnimation(130);
+  const testimonial5Animation = use3DAnimation(140);
+  const testimonial6Animation = use3DAnimation(150);
+  const testimonial7Animation = use3DAnimation(160);
+  const testimonial8Animation = use3DAnimation(170);
+  const testimonial9Animation = use3DAnimation(180);
+  const testimonial10Animation = use3DAnimation(190);
   
   // Duplicated testimonials for first row (11-15)
-  const duplicate1Animation = use3DAnimation(950);
-  const duplicate2Animation = use3DAnimation(1000);
-  const duplicate3Animation = use3DAnimation(1050);
-  const duplicate4Animation = use3DAnimation(1100);
-  const duplicate5Animation = use3DAnimation(1150);
+  const duplicate1Animation = use3DAnimation(200);
+  const duplicate2Animation = use3DAnimation(210);
+  const duplicate3Animation = use3DAnimation(220);
+  const duplicate4Animation = use3DAnimation(230);
+  const duplicate5Animation = use3DAnimation(240);
   
   // Duplicated testimonials for second row (16-20)
-  const duplicate6Animation = use3DAnimation(1200);
-  const duplicate7Animation = use3DAnimation(1250);
-  const duplicate8Animation = use3DAnimation(1300);
-  const duplicate9Animation = use3DAnimation(1350);
-  const duplicate10Animation = use3DAnimation(1400);
+  const duplicate6Animation = use3DAnimation(250);
+  const duplicate7Animation = use3DAnimation(260);
+  const duplicate8Animation = use3DAnimation(270);
+  const duplicate9Animation = use3DAnimation(280);
+  const duplicate10Animation = use3DAnimation(290);
   
   const testimonialAnimations = [
     testimonial1Animation, testimonial2Animation, testimonial3Animation, testimonial4Animation, testimonial5Animation,

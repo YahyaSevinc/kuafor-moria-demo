@@ -124,13 +124,18 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({
         </p>
         
         <button 
-          className={`mt-4 w-max bg-[#5D38DE] hover:bg-[#5432CC] transition-all duration-300 text-white font-medium rounded-full px-6 py-3
+          className={`mt-4 w-max bg-[#5D38DE] hover:bg-[#5432CC] text-white font-medium rounded-full px-6 py-3
             hover:shadow-lg hover:scale-105 active:scale-95
             ${visibleElements.leftContent 
-              ? "opacity-100 translate-y-0 delay-300" 
+              ? "opacity-100 translate-y-0" 
               : "opacity-0 translate-y-4"}
           `}
-          style={{ transitionDuration: visibleElements.leftContent ? "500ms, 300ms" : "500ms" }}
+          style={{ 
+            willChange: "transform, background-color, box-shadow",
+            transition: visibleElements.leftContent 
+              ? "transform 200ms ease-out, background-color 200ms ease-out, box-shadow 200ms ease-out"
+              : "opacity 500ms ease-out 300ms, transform 500ms ease-out 300ms"
+          }}
         >
           {leftButtonText}
         </button>
@@ -239,13 +244,18 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({
         </p>
         
         <button 
-          className={`mt-4 w-max bg-[#5D38DE] hover:bg-[#5432CC] transition-all duration-300 text-white font-medium rounded-full px-6 py-3
+          className={`mt-4 w-max bg-[#5D38DE] hover:bg-[#5432CC] text-white font-medium rounded-full px-6 py-3
             hover:shadow-lg hover:scale-105 active:scale-95
             ${visibleElements.rightContent 
-              ? "opacity-100 translate-y-0 delay-500" 
+              ? "opacity-100 translate-y-0" 
               : "opacity-0 translate-y-4"}
           `}
-          style={{ transitionDuration: visibleElements.rightContent ? "1000ms, 300ms" : "1000ms" }}
+          style={{ 
+            willChange: "transform, background-color, box-shadow",
+            transition: visibleElements.rightContent 
+              ? "transform 200ms ease-out, background-color 200ms ease-out, box-shadow 200ms ease-out"
+              : "opacity 1000ms ease-out 500ms, transform 1000ms ease-out 500ms"
+          }}
         >
           {rightButtonText}
         </button>

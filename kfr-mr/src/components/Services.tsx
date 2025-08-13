@@ -17,9 +17,9 @@ export default function Services({
   const { ref: headingRef, springProps: headingSpring } = use3DAnimation(600);
   
   // Pre-generate animation hooks for services
-  const service1Animation = use3DAnimation(800);
-  const service2Animation = use3DAnimation(1000);
-  const service3Animation = use3DAnimation(1200);
+  const service1Animation = use3DAnimation(0);
+  const service2Animation = use3DAnimation(200);
+  const service3Animation = use3DAnimation(400);
   const serviceAnimations = [service1Animation, service2Animation, service3Animation];
 
   const services = [

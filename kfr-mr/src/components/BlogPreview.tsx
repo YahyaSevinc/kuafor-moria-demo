@@ -25,15 +25,15 @@ const blogPosts = [
 ];
 
 const BlogPreview = () => {
-  const { ref: badgeRef, springProps: badgeSpring } = use3DAnimation(200);
-  const { ref: headingRef, springProps: headingSpring } = use3DAnimation(400);
-  const { ref: descriptionRef, springProps: descriptionSpring } = use3DAnimation(600);
-  const { ref: postsRef, springProps: postsSpring } = use3DAnimation(800);
-  const { ref: buttonRef, springProps: buttonSpring } = use3DAnimation(1000);
+  const { ref: badgeRef, springProps: badgeSpring } = use3DAnimation(0);
+  const { ref: headingRef, springProps: headingSpring } = use3DAnimation(100);
+  const { ref: descriptionRef, springProps: descriptionSpring } = use3DAnimation(200);
+  const { ref: postsRef, springProps: postsSpring } = use3DAnimation(300);
+  const { ref: buttonRef, springProps: buttonSpring } = use3DAnimation(400);
   
   // Pre-generate animation hooks for blog posts
-  const post1Animation = use3DAnimation(1200);
-  const post2Animation = use3DAnimation(1400);
+  const post1Animation = use3DAnimation(350);
+  const post2Animation = use3DAnimation(400);
   const postAnimations = [post1Animation, post2Animation];
 
   return (

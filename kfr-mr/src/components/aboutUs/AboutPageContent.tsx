@@ -29,10 +29,10 @@ export default function AboutPageContent() {
 
   const videoUrl =
     "https://www.youtube.com/embed/mAg8UyDt_sw?autoplay=1&rel=0";
-  const { ref: mainRef, } = use3DAnimation(200);
-  const { ref: titleRef, springProps: titleSpring } = use3DAnimation(400);
-  const { ref: statsRef, springProps: statsSpring } = use3DAnimation(600);
-  const { ref: cardsRef, springProps: cardsSpring } = use3DAnimation(800);
+  const { ref: mainRef, } = use3DAnimation(0);
+  const { ref: titleRef, springProps: titleSpring } = use3DAnimation(100);
+  const { ref: statsRef, springProps: statsSpring } = use3DAnimation(200);
+  const { ref: cardsRef, springProps: cardsSpring } = use3DAnimation(300);
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
