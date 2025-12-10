@@ -118,7 +118,7 @@ export default function Header() {
             </button>
           </animated.div>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu buttond */}
           <div className="md:hidden flex-shrink-0">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
